@@ -1,4 +1,5 @@
 ﻿using ShapeTracker.Models;
+using ShapeTracker.UserInterfaceModels;
 
 namespace ShapeTracker
 {
@@ -6,8 +7,11 @@ namespace ShapeTracker
     {
         static void Main()
         {
-            Console.WriteLine("//--//--//--//--//--//--//--//");
-            Console.WriteLine("//--I AM THE SHAPE TRACKER--//");
+            if (Triangle.GetAll().Count == 0)
+            {
+                Console.WriteLine(WelcomeBanner.Welcome);
+                Console.WriteLine(WelcomeBanner.ShapeWizard);
+            }
             Console.WriteLine("Please enter three sides for me to evaluate:");
             Console.WriteLine("Enter the first side length:");
             string stringNumber1 = Console.ReadLine();
@@ -57,9 +61,11 @@ namespace ShapeTracker
             Console.WriteLine($"This is {result}.");
             Console.WriteLine("//--//--//--//--//--//--//--//");
             Console.WriteLine("Care to play again?");
-            Console.WriteLine("Enter 'n' to begin another experiment with triangles");
+            Console.WriteLine(
+                "Enter 'y' to begin another experiment with triangles, otherwise hit any key to banish me to the void"
+            );
             string userInput = Console.ReadLine();
-            if (userInput == "n" || userInput == "N")
+            if (userInput == "y" || userInput == "Y")
             {
                 Main();
             }
