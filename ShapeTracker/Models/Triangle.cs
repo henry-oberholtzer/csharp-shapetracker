@@ -17,7 +17,7 @@ namespace ShapeTracker.Models
             get { return _side3; }
             set { _side3 = value; }
         }
-        private static List<Triangle> _instances = new List<Triangle> { };
+        private static List<Triangle> _instances = [];
 
         public Triangle(int length1, int length2, int length3)
         {

@@ -3,8 +3,13 @@ using ShapeTracker.Models;
 namespace ShapeTracker.Tests
 {
     [TestClass]
-    public class RectangleTests
+    public class RectangleTests : IDisposable
     {
+        public void Dispose()
+        {
+            Rectangle.ClearAll();
+        }
+
         [TestMethod]
         public void RectangleConstructor_CreateInstanceOfRectangle_Rectangle()
         {
@@ -52,6 +57,28 @@ namespace ShapeTracker.Tests
             Rectangle rectangle10 = new Rectangle(2, 5);
             int area = rectangle10.ComputeArea();
             Assert.AreEqual(10, area);
+        }
+
+        [TestMethod]
+        public void GetAll_ReturnsAllRectangleInstances_List()
+        {
+            Rectangle one = new Rectangle(2, 3);
+            Rectangle two = new Rectangle(4, 5);
+            Rectangle three = new Rectangle(5, 6);
+            List<Rectangle> expected = new List<Rectangle> { one, two, three };
+            List<Rectangle> actual = Rectangle.GetAll();
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ClearAll_ClearsAllRectangleInstances_Void()
+        {
+            Rectangle one = new Rectangle(2, 3);
+            Rectangle two = new Rectangle(4, 5);
+            Rectangle three = new Rectangle(5, 6);
+            List<Rectangle> expected = new List<Rectangle> { };
+            Rectangle.ClearAll();
+            CollectionAssert.AreEqual(expected, Rectangle.GetAll());
         }
     }
 }
