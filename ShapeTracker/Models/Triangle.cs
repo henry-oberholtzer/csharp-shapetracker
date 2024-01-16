@@ -9,7 +9,9 @@ namespace ShapeTracker.Models
             set { _side1 = value; }
         }
         public int Side2 { get; set; }
+
         private int _side3;
+
         public int Side3
         {
             get { return _side3; }
